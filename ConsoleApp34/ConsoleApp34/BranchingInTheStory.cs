@@ -77,7 +77,7 @@ namespace ConsoleApp34
             Console.WriteLine("После того как рипер рассказал вам дальнейшие действия вы отправились в путь");
             Console.WriteLine("Дойдя до квартиры где бандиты хранили краденные протезы у вас в голове было два варианта как им противостоять");
             Console.WriteLine("Первый и вполне разумный вариант был бы действовать тихо, но и в тот же момент вы хотели разнести их всех в щепки");
-            Console.WriteLine("\nВыбрать тихий или громкий вариант\n (S)ilent or (H)ard\n");
+            Console.WriteLine("\nВыбрать тихий или громкий вариант\n (S)ilent or (R)ush\n");
             ConsoleKeyInfo firstline;
             while (true)
             {
@@ -90,9 +90,9 @@ namespace ConsoleApp34
                     Console.WriteLine($" --- You pressed {firstline.Key}ilent\n");
                     break;
                 }
-                else if (firstline.Key == ConsoleKey.H)
+                else if (firstline.Key == ConsoleKey.R)
                 {
-                    Console.WriteLine($" --- You pressed {firstline.Key}ard\n");
+                    Console.WriteLine($" --- You pressed {firstline.Key}ush\n");
                     break;
                 }
                 else
