@@ -52,7 +52,10 @@ namespace ConsoleApp34
                     Console.WriteLine("Все ваши счета и сбережения можно сказать были просто анулированы");
                     Console.WriteLine("Рипер предложил вам заработать маленьким налётом на местных бандитов и у вас не было варианта отказаться");
                     Console.WriteLine("Рипер дал вам новый пистолет и пару обойм");
+                    FirstLine();
                     break;
+                    
+                    
                 }
                 else if (newgame.Key == ConsoleKey.N)
                 {
@@ -71,15 +74,30 @@ namespace ConsoleApp34
 
         public void FirstLine()
         {
+            Console.WriteLine("После того как рипер рассказал вам дальнейшие действия вы отправились в путь");
+            Console.WriteLine("Дойдя до квартиры где бандиты хранили краденные протезы у вас в голове было два варианта как им противостоять");
+            Console.WriteLine("Первый и вполне разумный вариант был бы действовать тихо, но и в тот же момент вы хотели разнести их всех в щепки");
+            Console.WriteLine("\nВыбрать тихий или громкий вариант\n (S)ilent or (H)ard\n");
             ConsoleKeyInfo firstline;
             while (true)
             {
+
 
 
                 firstline = Console.ReadKey();
                 if (firstline.Key == ConsoleKey.S)
                 {
                     Console.WriteLine($" --- You pressed {firstline.Key}ilent\n");
+                    break;
+                }
+                else if (firstline.Key == ConsoleKey.H)
+                {
+                    Console.WriteLine($" --- You pressed {firstline.Key}ard\n");
+                    break;
+                }
+                else
+                {
+
                 }
             }
 
