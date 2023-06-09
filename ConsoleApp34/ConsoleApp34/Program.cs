@@ -37,24 +37,29 @@
 
         public class BlackEagle : Enemy
         {
-            public BlackEagle() : base(30, 5, 1, 10)
+            public BlackEagle() : base(50, 5, 1, 150)
             {
             }
         }
 
         public class People : Enemy
         {
-            public People() : base(50, 10, 2, 20)
+            public People() : base(50, 10, 1, 200)
             {
             }
         }
 
         public class RoboSuck : Enemy
         {
-            public RoboSuck() : base(80, 20, 3, 30)
+            public RoboSuck() : base(65, 13, 2, 300)
             {
             }
         }
+
+        var blackEagle = new BlackEagle();
+        var people = new People();
+        var roboSuck = new RoboSuck();
+        var hero = new Hero(100, 15, 1, 0);
 
         static void Main(string[] args)
         {
