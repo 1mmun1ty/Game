@@ -2,6 +2,60 @@
 {
     class program
     {
+        public class Enemy
+        {
+            public int Health { get; set; }
+            public int Damage { get; set; }
+            public int Level { get; set; }
+            public int Experience { get; set; }
+
+            public Enemy(int health, int damage, int level, int experience)
+            {
+                Health = health;
+                Damage = damage;
+                Level = level;
+                Experience = experience;
+            }
+        }
+
+
+        public class Hero
+        {
+            public int Health { get; set; }
+            public int Damage { get; set; }
+            public int Level { get; set; }
+            public int Experience { get; set; }
+
+            public Hero(int health, int damage, int level, int experience)
+            {
+                Health = health;
+                Damage = damage;
+                Level = level;
+                Experience = experience;
+            }
+        }
+
+        public class BlackEagle : Enemy
+        {
+            public BlackEagle() : base(30, 5, 1, 10)
+            {
+            }
+        }
+
+        public class People : Enemy
+        {
+            public People() : base(50, 10, 2, 20)
+            {
+            }
+        }
+
+        public class RoboSuck : Enemy
+        {
+            public RoboSuck() : base(80, 20, 3, 30)
+            {
+            }
+        }
+
         static void Main(string[] args)
         {
             BranchingInTheStory branch = new BranchingInTheStory();

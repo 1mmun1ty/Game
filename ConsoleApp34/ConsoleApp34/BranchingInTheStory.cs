@@ -27,7 +27,7 @@ namespace ConsoleApp34
                 else if (news.Key == ConsoleKey.N)
                 {
                     Console.WriteLine($" --- You pressed {news.Key}o\n");
-                    Console.WriteLine("Вы не захотели тратить своё личное на просмотр зомбоящика, у вас были дела намного важнее этого");
+                    Console.WriteLine("Вы не захотели тратить своё личное время на просмотр зомбоящика, у вас были дела намного важнее этого");
                     Console.WriteLine("Далее\n");
                     break;
                 }
