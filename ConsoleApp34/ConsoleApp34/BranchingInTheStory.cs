@@ -109,7 +109,7 @@ namespace ConsoleApp34
                     LvlUp();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("К сожалению это был самый общительный человек в компании и враги сразу поняли, что здесь что-то не так");
-                    Console.WriteLine("Вам пришлось достать пистолет и стрелять на поражение, ведь сейчас на кону стоит ваша жизнь");
+                    Console.WriteLine("Вам пришлось достать пистолет и стрелять на поражение, ведь сейчас на кону стоит ваша жизнь"); 
                     break;
                 }
                 else if (firstline.Key == ConsoleKey.R)
@@ -131,6 +131,7 @@ namespace ConsoleApp34
             int expvalue = 100;
             if (hero.Experience == expvalue)
             {
+                hero.Experience = 0;
                 hero.Level += 1;
                 hero.Damage += 5;
                 hero.Health += 10;
