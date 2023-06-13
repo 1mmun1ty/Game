@@ -20,6 +20,7 @@
             branch.NewGame();
 
             branch.Battle();
+            branch.NextBattle();
 
             
 

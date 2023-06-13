@@ -10,6 +10,7 @@ namespace ConsoleApp34
     {
         Hero hero = new Hero(100, 10, 1, 0);
         People people = new People();
+        Enemy robosuck = new Enemy(65, 13, 2, 300);
         public void News()
         {
             ConsoleKeyInfo news;
@@ -177,7 +178,7 @@ namespace ConsoleApp34
                             Console.WriteLine("Вы промахнулись");
                             hero.Health -= people.Damage;
                         }
-                        Console.WriteLine($"У вас {hero.Health} HP, враг {people.Health} HP \n" );
+                        Console.WriteLine($"У вас {hero.Health} HP, враг {people.Health} HP \n");
 
                     }
 
@@ -258,6 +259,119 @@ namespace ConsoleApp34
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
+        }
+        public void NextBattle()
+        {
+            Random headshotrnd = new Random();
+            Random bodyshotrnd = new Random();
+            while (true)
+            {
+                while (robosuck.Health > 0 && hero.Health > 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Вы решили выстрелить в");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("1 - Выстрел в голову шанс попасть 25%");
+                    Console.WriteLine("2 - Выстрел в тело шанс попасть 75%");
+                    int shot = int.Parse(Console.ReadLine());
+
+                    if (shot == 1)
+                    {
+                        int hsrnd = headshotrnd.Next(0, 4);
+                        Console.WriteLine(hsrnd);
+                        if (hsrnd <= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("Вы попали в голову!");
+                            robosuck.Health -= hero.Damage * 2;
+
+                        }
+                        else if (hsrnd >= 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("Вы промахнулись");
+                            hero.Health -= robosuck.Damage;
+                        }
+                        Console.WriteLine($"У вас {hero.Health} HP, враг {robosuck.Health} HP");
+                    }
+                    else if (shot == 2)
+                    {
+                        int bdrnd = bodyshotrnd.Next(0, 4);
+                        if (bdrnd <= 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("Вы попали в тело!");
+                            robosuck.Health -= hero.Damage;
+
+                        }
+                        else if (bdrnd == 3)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("Вы промахнулись");
+                            hero.Health -= robosuck.Damage;
+                        }
+                        Console.WriteLine($"У вас {hero.Health} HP, враг {robosuck.Health} HP \n");
+
+                    }
+
+                }
+
+                if (hero.Health <= 0)
+                {
+
+                    Console.WriteLine("Вы проиграли, хотите перезапустить бой?");
+
+                    string userInput = Console.ReadLine();
+
+                    if (userInput == "y")
+                    {
+                        Console.WriteLine("Бой был перезапущен");
+                        hero.Health = 120;
+                        robosuck.Health = 65;
+                        continue;
+                    }
+                    else if (userInput == "n")
+                    {
+                        Console.WriteLine("бой окончен");
+
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Вы ввели некорректное значение");
+                        Console.WriteLine("вы хотите вернуться к выбору? (y/n)");
+                        string c = (Console.ReadLine());
+                        if (c == "y")
+                        {
+                            Console.Clear();
+                            continue;
+                        }
+                        else
+                        {
+                            Environment.Exit(0);
+
+                        }
+                    }
+                }
+                else if (robosuck.Health <= 0)
+                {
+                    hero.Health = 120;
+                    hero.Experience = robosuck.Experience;
+                    if (hero.Experience == expvalue)
+                    {
+                        LvlUp();
+                    }
+                    Console.WriteLine("Итоги битвы:");
+                    Console.WriteLine("Здоровье оставшееся у Игрока: " + hero.Health);
+                    Console.WriteLine("Здоровье оставшееся у Бандита: " + robosuck.Health);
+                    Console.WriteLine($"{hero.Experience} / {expvalue}XP");
+                    Console.WriteLine("чтобы продолжить нажмите любую кнопку");
+                    Console.ReadKey();
+                    break;
+                }
+
+
+            }
         }
     }
 }
