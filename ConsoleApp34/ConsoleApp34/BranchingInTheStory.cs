@@ -126,74 +126,138 @@ namespace ConsoleApp34
 
 
         }
-        public void LvlUp()
-        {
 
-            int expvalue = 100;
-            if (hero.Experience == expvalue)
-            {
-                hero.Experience = 0;
-                hero.Level += 1;
-                hero.Damage += 5;
-                hero.Health += 10;
-                Console.WriteLine($"Вы повысили уровень. Теперь ваш уровень {hero.Level}, урон {hero.Damage}, хп {hero.Health}, опыт {hero.Experience}");
-            }
-        }
         public void Battle()
         {
             Random headshotrnd = new Random();
             Random bodyshotrnd = new Random();
-            while (true) {
-                while (people.Health > 0 || hero.Health > 0)
+            while (true)
+            {
+                while (people.Health > 0 && hero.Health > 0)
                 {
-
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Вы решили выстрелить в");
-                    int shot = int.Parse(Console.ReadLine());
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("1 - Выстрел в голову шанс попасть 25%");
                     Console.WriteLine("2 - Выстрел в тело шанс попасть 75%");
+                    int shot = int.Parse(Console.ReadLine());
+
                     if (shot == 1)
                     {
                         int hsrnd = headshotrnd.Next(0, 4);
                         Console.WriteLine(hsrnd);
                         if (hsrnd <= 0)
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("Вы попали в голову!");
                             people.Health -= hero.Damage * 2;
 
                         }
                         else if (hsrnd >= 1)
                         {
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("Вы промахнулись");
                             hero.Health -= people.Damage;
                         }
-                        Console.WriteLine($"У вас{hero.Health}, враг {people.Health}");
+                        Console.WriteLine($"У вас {hero.Health} HP, враг {people.Health} HP");
                     }
                     else if (shot == 2)
                     {
                         int bdrnd = bodyshotrnd.Next(0, 4);
                         if (bdrnd <= 2)
                         {
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("Вы попали в тело!");
                             people.Health -= hero.Damage;
 
                         }
                         else if (bdrnd == 3)
                         {
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("Вы промахнулись");
                             hero.Health -= people.Damage;
                         }
-                        Console.WriteLine($"У вас{hero.Health}, враг {people.Health}");
+                        Console.WriteLine($"У вас {hero.Health} HP, враг {people.Health} HP \n" );
 
                     }
-                    
+
                 }
 
-                if (people.Health < 0)
+                if (hero.Health <= 0)
                 {
+
                     Console.WriteLine("Вы проиграли, хотите перезапустить бой?");
+
+                    string userInput = Console.ReadLine();
+
+                    if (userInput == "y")
+                    {
+                        Console.WriteLine("Бой был перезапущен");
+                        hero.Health = 110;
+                        people.Health = 50;
+                        continue;
+                    }
+                    else if (userInput == "n")
+                    {
+                        Console.WriteLine("бой окончен");
+
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Вы ввели некорректное значение");
+                        Console.WriteLine("вы хотите вернуться к выбору? (y/n)");
+                        string c = (Console.ReadLine());
+                        if (c == "y")
+                        {
+                            Console.Clear();
+                            continue;
+                        }
+                        else
+                        {
+                            Environment.Exit(0);
+
+                        }
+                    }
                 }
+                else if (people.Health <= 0)
+                {
+                    hero.Health = 110;
+                    hero.Experience = people.Experience;
+                    if (hero.Experience == expvalue)
+                    {
+                        LvlUp();
+                    }
+                    Console.WriteLine("Итоги битвы:");
+                    Console.WriteLine("Здоровье оставшееся у Игрока: " + hero.Health);
+                    Console.WriteLine("Здоровье оставшееся у Бандита: " + people.Health);
+                    Console.WriteLine("чтобы продолжить нажмите любую кнопку");
+                    Console.ReadKey();
+                    break;
+                }
+
 
             }
+
+
+        }
+        int expvalue = 100;
+        public void LvlUp()
+        {
+
+            if (hero.Experience == expvalue)
+            {
+                hero.Experience = 0;
+                hero.Level += 1;
+                hero.Damage += 5;
+                hero.Health += 10;
+                expvalue *= 2;
+                Console.WriteLine($"Вам нужно набрать - {expvalue} XP для следующего уровня");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Вы повысили уровень. Теперь ваш уровень {hero.Level}, урон {hero.Damage}, хп {hero.Health}, опыт {hero.Experience}");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
         }
     }
 }
