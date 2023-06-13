@@ -8,7 +8,7 @@ namespace ConsoleApp34
 {
     public class Enemy
     {
-        public Enemy(int health, int damage, int level, int experience)
+        public Enemy(double health, double damage, int level, int experience)
         {
             Health = health;
             Damage = damage;
@@ -16,8 +16,8 @@ namespace ConsoleApp34
             Experience = experience;
         }
 
-        public int Health { get; set; }
-        public int Damage { get; set; }
+        public double Health { get; set; }
+        public double Damage { get; set; }
         public int Level { get; set; }
         public int Experience { get; set; }
 

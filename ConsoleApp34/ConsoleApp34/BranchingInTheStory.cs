@@ -9,6 +9,7 @@ namespace ConsoleApp34
     public class BranchingInTheStory
     {
         Hero hero = new Hero(100, 10, 1, 0);
+        People people = new People();
         public void News()
         {
             ConsoleKeyInfo news;
@@ -54,7 +55,7 @@ namespace ConsoleApp34
                     Console.WriteLine($" --- You pressed {newgame.Key}es\n");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Вы накинули плащ и пошли на поиски рипера для того чтобы узнать что произошло за всё это время");
-                    Console.WriteLine("Зайдя в какой-то переулок вы поспрашивали прохожих и смогли найти рипера. Вы зашли в его маленькую квартиру и с большим удивлением слушали о том, что произошло за те 50 лет которые для вас прошли за одну ночь");
+                    Console.WriteLine("Зайдя в какой-то переулок вы поспрашивали прохожих и смогли найти рипера. Вы зашли в его маленькую квартиру и с большим удивлением слушали о том, \nчто произошло за те 50 лет которые для вас прошли за одну ночь");
                     Console.WriteLine("Рипер предложил вам поставить импланты и протезы, вы согласились, но протянув ему деньги он был шокирован. ТАКАЯ ВАЛЮТА НЕ ИСПОЛЬЗУЕТСЯ С 2063 ГОДА");
                     Console.WriteLine("Все ваши счета и сбережения можно сказать были просто анулированы");
                     Console.WriteLine("Рипер предложил вам заработать маленьким налётом на местных бандитов и у вас не было варианта отказаться");
@@ -104,12 +105,12 @@ namespace ConsoleApp34
                     Console.WriteLine("Немного подумав вы решили, что всё таки надо действовать скрытно и не идти в открытую, так как неизвестно насколько они сильны");
                     Console.WriteLine("Вы скрытно входите в квартиру и аккуратно подходите к первому противнику, он стоял спиной к вам и это был самый лучший шанс для его быстрого обезвреживания");
                     Console.WriteLine("Тихо подойдя со спины к противнику вы быстро его обезвредили и оттащили в тёмное место, чтобы друзья не заметили его пропажи");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
                     hero.Experience += 100;
                     LvlUp();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("К сожалению это был самый общительный человек в компании и враги сразу поняли, что здесь что-то не так");
-                    Console.WriteLine("Вам пришлось достать пистолет и стрелять на поражение, ведь сейчас на кону стоит ваша жизнь"); 
+                    Console.WriteLine("Вам пришлось достать пистолет и стрелять на поражение, ведь сейчас на кону стоит ваша жизнь");
                     break;
                 }
                 else if (firstline.Key == ConsoleKey.R)
@@ -127,7 +128,7 @@ namespace ConsoleApp34
         }
         public void LvlUp()
         {
-            
+
             int expvalue = 100;
             if (hero.Experience == expvalue)
             {
@@ -136,6 +137,62 @@ namespace ConsoleApp34
                 hero.Damage += 5;
                 hero.Health += 10;
                 Console.WriteLine($"Вы повысили уровень. Теперь ваш уровень {hero.Level}, урон {hero.Damage}, хп {hero.Health}, опыт {hero.Experience}");
+            }
+        }
+        public void Battle()
+        {
+            Random headshotrnd = new Random();
+            Random bodyshotrnd = new Random();
+            while (true) {
+                while (people.Health > 0 || hero.Health > 0)
+                {
+
+                    Console.WriteLine("Вы решили выстрелить в");
+                    int shot = int.Parse(Console.ReadLine());
+                    Console.WriteLine("1 - Выстрел в голову шанс попасть 25%");
+                    Console.WriteLine("2 - Выстрел в тело шанс попасть 75%");
+                    if (shot == 1)
+                    {
+                        int hsrnd = headshotrnd.Next(0, 4);
+                        Console.WriteLine(hsrnd);
+                        if (hsrnd <= 0)
+                        {
+                            Console.WriteLine("Вы попали в голову!");
+                            people.Health -= hero.Damage * 2;
+
+                        }
+                        else if (hsrnd >= 1)
+                        {
+                            Console.WriteLine("Вы промахнулись");
+                            hero.Health -= people.Damage;
+                        }
+                        Console.WriteLine($"У вас{hero.Health}, враг {people.Health}");
+                    }
+                    else if (shot == 2)
+                    {
+                        int bdrnd = bodyshotrnd.Next(0, 4);
+                        if (bdrnd <= 2)
+                        {
+                            Console.WriteLine("Вы попали в тело!");
+                            people.Health -= hero.Damage;
+
+                        }
+                        else if (bdrnd == 3)
+                        {
+                            Console.WriteLine("Вы промахнулись");
+                            hero.Health -= people.Damage;
+                        }
+                        Console.WriteLine($"У вас{hero.Health}, враг {people.Health}");
+
+                    }
+                    
+                }
+
+                if (people.Health < 0)
+                {
+                    Console.WriteLine("Вы проиграли, хотите перезапустить бой?");
+                }
+
             }
         }
     }

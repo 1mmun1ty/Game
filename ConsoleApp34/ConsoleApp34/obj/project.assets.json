@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Студент\\.nuget\\packages\\": {},
-    "D:\\VisualStudioSDK\\NuGetPackages": {}
+    "C:\\Users\\Anton\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Студент\\Documents\\GitHub\\day3\\Game\\ConsoleApp34\\ConsoleApp34\\ConsoleApp34.csproj",
+      "projectUniqueName": "C:\\Users\\Anton\\Documents\\Game\\ConsoleApp34\\ConsoleApp34\\ConsoleApp34.csproj",
       "projectName": "ConsoleApp34",
-      "projectPath": "C:\\Users\\Студент\\Documents\\GitHub\\day3\\Game\\ConsoleApp34\\ConsoleApp34\\ConsoleApp34.csproj",
-      "packagesPath": "C:\\Users\\Студент\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Студент\\Documents\\GitHub\\day3\\Game\\ConsoleApp34\\ConsoleApp34\\obj\\",
+      "projectPath": "C:\\Users\\Anton\\Documents\\Game\\ConsoleApp34\\ConsoleApp34\\ConsoleApp34.csproj",
+      "packagesPath": "C:\\Users\\Anton\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Anton\\Documents\\Game\\ConsoleApp34\\ConsoleApp34\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\VisualStudioSDK\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Студент\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +28,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -67,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
