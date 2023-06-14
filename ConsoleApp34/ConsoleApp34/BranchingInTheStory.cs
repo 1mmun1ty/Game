@@ -232,7 +232,13 @@ namespace ConsoleApp34
                     Console.WriteLine("Итоги битвы:");
                     Console.WriteLine("Здоровье оставшееся у Игрока: " + hero.Health);
                     Console.WriteLine("Здоровье оставшееся у Бандита: " + people.Health);
-                    Console.WriteLine("чтобы продолжить нажмите любую кнопку");
+                    Console.WriteLine("\n\nПосле убийства первого врага вы сразу поняли, что они будут покрепче тех людей, которых вы устраняли в 2027.");
+                    Console.WriteLine("Но это были ещё цветочки, вы увидели какого-то непонятного парня, который стоял и почти весь был в протезах");
+                    Console.WriteLine("Вы решили надееться на пистолет который вам дал рипер и это было верным решением, ведь технологии выросли\nна столько, что пистолетам того времени не хватало огневой мощи для пробития таких протезов");
+                    Console.WriteLine("Он резко повернулся на вас и начал вести огонь, но вы тоже не из робкого десятка, быстро прыгнув за стену у вас началась ещё одна перестрелка");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Нажмите ЛЮБУЮ КНОПКУ");
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.ReadKey();
                     break;
                 }
@@ -253,8 +259,8 @@ namespace ConsoleApp34
                 hero.Damage += 5;
                 hero.Health += 10;
                 expvalue *= 2;
-                Console.WriteLine($"Вам нужно набрать - {expvalue} XP для следующего уровня");
                 Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"Вам нужно набрать - {expvalue} XP для следующего уровня");
                 Console.WriteLine($"Вы повысили уровень. Теперь ваш уровень {hero.Level}, урон {hero.Damage}, хп {hero.Health}, опыт {hero.Experience}");
                 Console.ForegroundColor = ConsoleColor.Green;
             }
@@ -363,8 +369,10 @@ namespace ConsoleApp34
                     }
                     Console.WriteLine("Итоги битвы:");
                     Console.WriteLine("Здоровье оставшееся у Игрока: " + hero.Health);
-                    Console.WriteLine("Здоровье оставшееся у Бандита: " + robosuck.Health);
+                    Console.WriteLine("\n\nЗдоровье оставшееся у Бандита: " + robosuck.Health);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine($"{hero.Experience} / {expvalue}XP");
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("чтобы продолжить нажмите любую кнопку");
                     Console.ReadKey();
                     break;
